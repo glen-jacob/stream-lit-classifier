@@ -1,0 +1,122 @@
+/* --- Global Styles & Streamlit Overrides --- */
+body {
+    background-color: #120c1c; /* Very dark purple background */
+    color: #e0e0e0;
+}
+
+.stApp {
+    background-color: #120c1c;
+}
+
+/* Hide Streamlit's default header and footer */
+header, footer {
+    display: none !important;
+}
+
+/* --- Typography --- */
+.main-title {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+.sub-title {
+    font-size: 1.5em;
+    color: #9c27b0; /* Primary purple accent */
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+p {
+    color: #a9a9a9; /* Lighter grey for paragraph text */
+}
+
+/* --- Layout & Placeholders --- */
+.placeholder {
+    border: 2px dashed #3c2a66;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    text-align: center;
+    color: #5a3f8c;
+    font-size: 1.2em;
+}
+
+.styled-hr {
+    border-top: 1px solid #3c2a66;
+    margin: 2rem 0;
+}
+
+/* --- File Uploader Styling --- */
+.stFileUploader > label {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.stFileUploader button {
+    background-color: #e91e63; /* Pink accent */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+.stFileUploader button:hover {
+    background-color: #c2185b; /* Darker pink on hover */
+    color: white;
+}
+
+/* --- Image Styling --- */
+.stImage img {
+    border-radius: 15px;
+    border: 3px solid #3c2a66;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Prediction Card Styling --- */
+.prediction-header {
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.prediction-card {
+    background-color: #2b1f4a; /* Lighter purple card background */
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border: 1px solid #3c2a66;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.prediction-card .label {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.confidence-wrapper {
+    background-color: #120c1c;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 30px;
+}
+
+.confidence-bar {
+    background: linear-gradient(90deg, #9c27b0, #e91e63); /* Purple to Pink gradient */
+    height: 100%;
+    border-radius: 10px;
+}
+
+.confidence-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+}
