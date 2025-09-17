@@ -21,7 +21,7 @@ def load_css(file_name):
 def load_model():
     model = tf.keras.applications.MobileNetV2(weights='imagenet')
     return model
-
+'''
 # Function to preprocess and predict
 def predict_image(model, image):
     img_resized = image.resize((224, 224))
@@ -30,6 +30,33 @@ def predict_image(model, image):
     processed_img = tf.keras.applications.mobilenet_v2.preprocess_input(img_array)
     predictions = model.predict(processed_img)
     decoded_predictions = tf.keras.applications.mobilenet_v2.decode_predictions(predictions, top=3)[0]
+    return decoded_predictions
+'''
+# Function to preprocess, augment and predict
+def predict_image(model, image):
+    # Resize to model input size
+    img_resized = image.resize((224, 224))
+    img_array = tf.keras.preprocessing.image.img_to_array(img_resized)
+    img_array = np.expand_dims(img_array, axis=0)
+
+    # Define augmentation pipeline
+    data_augmentation = tf.keras.Sequential([
+        tf.keras.layers.RandomFlip("horizontal_and_vertical"),
+        tf.keras.layers.RandomRotation(0.2),
+        tf.keras.layers.RandomZoom(0.2),
+        tf.keras.layers.RandomContrast(0.2),
+    ])
+
+    # Apply augmentation
+    augmented_img = data_augmentation(img_array)
+
+    # Preprocess for MobileNetV2
+    processed_img = tf.keras.applications.mobilenet_v2.preprocess_input(augmented_img)
+
+    # Prediction
+    predictions = model.predict(processed_img)
+    decoded_predictions = tf.keras.applications.mobilenet_v2.decode_predictions(predictions, top=3)[0]
+
     return decoded_predictions
 
 # --- Main App Logic ---
